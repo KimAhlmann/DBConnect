@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
+
+
 namespace DBConnect
 {
 
@@ -45,16 +48,40 @@ namespace DBConnect
                     Console.WriteLine(kunde["brændstofstype"].ToString());
                     Console.WriteLine(kunde["årgang"].ToString());
                     Console.WriteLine(kunde["km"].ToString());
-                   
+                    Console.WriteLine(kunde["dato"].ToString());
                     Console.WriteLine();
 
-                    
+
                 }
+
+
+
                 //string denførsterække = table.Rows[0]["navn"].ToString();
                 //Console.WriteLine(denførsterække);
             }
 
 
         }
+            public static void Update(string sql)
+            {
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand(sql, con);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public static void Delete(string sql)
+        {
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand(sql, con);
+                cmd.ExecuteNonQuery();
+            }
+
+        }
+
     }
 }
