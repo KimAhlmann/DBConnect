@@ -21,7 +21,8 @@ Model nvarchar (10),
 Brændstofstype nvarchar (10),
 årgang int,
 KM int,
-dato datetime default getdate())
+dato datetime default getdate()
+)
 go
 
 --select * from kunder
